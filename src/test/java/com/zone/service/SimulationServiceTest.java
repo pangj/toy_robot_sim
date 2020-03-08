@@ -13,16 +13,16 @@ public class SimulationServiceTest {
 
     SimulationServiceImpl simulationService = new SimulationServiceImpl();
 
-    @DisplayName( "given non-PLATE or invalid PLATE as first command , then fail immediately")
+    @DisplayName( "given non-PLACE or invalid PLACE as first command , then fail immediately")
     @Test
-    public void invalidPlateOrNonPlateFirstCommandNotAllow()
+    public void invalidPlaceOrNonPlaceFirstCommandNotAllow()
     {
         List<String> lines = new ArrayList<>(Arrays.asList("PLACE 6,1,NORTH", "LEFT", "MOVE"));
         String result = simulationService.execute(lines);
         assertTrue( result.endsWith( "please check the command and the paramters"));
     }
 
-    @DisplayName( "given valid PLATE, then initial state as set")
+    @DisplayName( "given valid PLACE, then initial state as set")
     @Test
     public void validPositionAndFaceParameterLeadToNewInitialState( )
     {
@@ -105,7 +105,7 @@ public class SimulationServiceTest {
         assertTrue(  output.endsWith( "0,0,SOUTH"));
     }
 
-    @DisplayName( "given the later invalid PLATE, then following non-PLATE commands be discarded until valid PLATE is up")
+    @DisplayName( "given the later invalid PLACE, then following non-PLACE commands be discarded until valid PLACE is up")
     @Test
     public void inValidPlaceWillNotProceedAndFollowingCommandsDicardedUntilValidPlace( )
     {
